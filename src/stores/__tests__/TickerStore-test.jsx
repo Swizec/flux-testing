@@ -36,7 +36,11 @@ describe('TickerStore', function () {
 
         keys.should.have.length(1);
 
-        all[keys[0]].should.have.time;
+        var last = all[keys[0]];
+
+        last.should.have.time;
+        last.should.have.id;
+        last.id.should.equal(keys[0]);
     });
 
     it('emits change on create', function () {
