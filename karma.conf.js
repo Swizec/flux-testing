@@ -3,9 +3,9 @@ var webpack = require('webpack');
 
 module.exports = function (config) {
     config.set({
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
         singleRun: true,
-        frameworks: ['mocha'],
+        frameworks: ['mocha', 'sinon-chai'],
         files: [
             'tests.webpack.js'
         ],
@@ -19,7 +19,10 @@ module.exports = function (config) {
                     {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'}
                 ]
             },
-            watch: true
+            watch: true,
+            resolve: {
+                extensions: ['', '.js', '.jsx']
+            }
         },
         webpackServer: {
             noInfo: true

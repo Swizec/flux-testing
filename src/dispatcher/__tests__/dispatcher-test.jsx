@@ -1,6 +1,4 @@
 
-const should = require('chai').should();
-
 describe('dispatcher', function () {
     it('should be a Dispatcher', function () {
         var dispatcher = require('../index.jsx');

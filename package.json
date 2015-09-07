@@ -22,18 +22,23 @@
     "url": "https://github.com/Swizec/react-event-ticker/issues"
   },
   "homepage": "https://github.com/Swizec/react-event-ticker",
+  "dependencies": {
+    "flux": "^2.1.1",
+    "react": "^0.13.3",
+    "keymirror": "^0.1.1"
+  },
   "devDependencies": {
     "babel-loader": "^5.3.2",
     "chai": "^3.2.0",
-    "flux": "^2.1.1",
     "karma": "^0.13.9",
     "karma-chrome-launcher": "^0.2.0",
     "karma-cli": "^0.1.0",
     "karma-mocha": "^0.2.0",
     "karma-nyan-reporter": "^0.2.2",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-sinon-chai": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.7.0",
-    "react": "^0.13.3",
     "react-hot-loader": "^1.2.9",
     "webpack": "^1.12.0",
     "webpack-dev-server": "^1.10.1"
