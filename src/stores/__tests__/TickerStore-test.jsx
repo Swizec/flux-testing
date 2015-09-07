@@ -35,6 +35,8 @@ describe('TickerStore', function () {
             keys = Object.keys(all);
 
         keys.should.have.length(1);
+
+        all[keys[0]].should.have.time;
     });
 
     it('emits change on create', function () {
