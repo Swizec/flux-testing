@@ -23,9 +23,14 @@
   },
   "homepage": "https://github.com/Swizec/react-event-ticker",
   "dependencies": {
+    "css-loader": "^0.17.0",
+    "file-loader": "^0.8.4",
     "flux": "^2.1.1",
+    "keymirror": "^0.1.1",
+    "less": "^2.5.1",
+    "less-loader": "^2.2.0",
     "react": "^0.13.3",
-    "keymirror": "^0.1.1"
+    "style-loader": "^0.12.3"
   },
   "devDependencies": {
     "babel-loader": "^5.3.2",

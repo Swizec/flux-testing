@@ -31,4 +31,13 @@ describe('TickerActions', function () {
             actionType: TickerConstants.TICK_STOP
         });
     });
+
+    it('can change window size', function () {
+        TickerActions.setWindow(100);
+
+        Dispatcher.dispatch.should.have.been.calledWith({
+            actionType: TickerConstants.TICK_SET_WINDOW,
+            size: 100
+        });
+    });
 });

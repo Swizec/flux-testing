@@ -19,6 +19,13 @@ var TickerActions = {
         Dispatcher.dispatch({
             actionType: TickerConstants.TICK_STOP
         });
+    },
+
+    setWindow: function (size) {
+        Dispatcher.dispatch({
+            actionType: TickerConstants.TICK_SET_WINDOW,
+            size: size
+        });
     }
 };
 

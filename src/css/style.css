@@ -1,0 +1,15 @@
+
+svg line {
+    stroke: black;
+    strok-width: 2px;
+}
+
+svg circle {
+    stroke: rgba(224, 76, 136, 0.6);
+    stroke-width: 1px;
+    fill: rgba(224, 76, 136, 0.3);
+}
+
+input {
+    width: 4em;
+}

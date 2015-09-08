@@ -2,12 +2,14 @@
 const _ = require('lodash'),
       EventEmitter = require('events').EventEmitter,
       TickerConstants = require('../constants/TickerConstants'),
-      Dispatcher = require('../dispatcher');
+      Dispatcher = require('../dispatcher'),
+      TickerActions = require('../actions/TickerActions');
 
 const CHANGE_EVENT = 'change';
 
 var _ticks = {},
-    _ticker_interval;
+    _ticker_interval,
+    _window_size = 2000;
 
 function create() {
     var id = (+new Date() + _.random(0, 9999)).toString(36);
@@ -18,7 +20,11 @@ function create() {
 }
 
 function start_ticker() {
-    _ticker_interval = setInterval(create, 100);
+    _ticker_interval = setInterval(function () {
+        if (_.random(0, 30) > 20) {
+            TickerActions.create();
+        }
+    }, 100);
 }
 
 function stop_ticker() {
@@ -32,6 +38,10 @@ const TickerStore = _.extend(EventEmitter.prototype, {
 
     isRunning: function () {
         return !!_ticker_interval;
+    },
+
+    getWindow: function () {
+        return _window_size;
     },
 
     emitChange: function () {
@@ -62,6 +72,11 @@ Dispatcher.register(function (action) {
 
         case TickerConstants.TICK_STOP:
             stop_ticker();
+            TickerStore.emitChange();
+            break
+
+        case TickerConstants.TICK_SET_WINDOW:
+            _window_size = action.size;
             TickerStore.emitChange();
             break
 

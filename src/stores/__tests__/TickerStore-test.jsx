@@ -88,4 +88,13 @@ describe('TickerStore', function () {
 
         TickerStore.isRunning().should.be.false;
     });
+
+    it('sets window size', function () {
+        Dispatcher.dispatch({
+            actionType: TickerConstants.TICK_SET_WINDOW,
+            size: 100
+        });
+
+        TickerStore.getWindow().should.equal(100);
+    });
 });

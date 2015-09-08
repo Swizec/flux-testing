@@ -3,7 +3,8 @@ const React = require('react');
 
 const TickerStore = require('../stores/TickerStore'),
       Header = require('./Header'),
-      Controls = require('./Controls');
+      Controls = require('./Controls'),
+      HorizontalDrops = require('./HorizontalDrops');
 
 const Ticker = React.createClass({
     getInitialState: function () {
@@ -22,7 +23,10 @@ const Ticker = React.createClass({
         return (
             <div>
                 <Header count={this.state.allTicks.length} />
-                <Controls isRunning={this.state.isRunning} />
+                <HorizontalDrops ticks={this.state.allTicks}
+                                 window={this.state.window} />
+                <Controls isRunning={this.state.isRunning}
+                          window={this.state.window} />
             </div>
         );
     },
@@ -30,7 +34,8 @@ const Ticker = React.createClass({
     _getTickerState: function () {
         return {
             allTicks: TickerStore.getAll(),
-            isRunning: TickerStore.isRunning()
+            isRunning: TickerStore.isRunning(),
+            window: TickerStore.getWindow()
         };
     },
 
