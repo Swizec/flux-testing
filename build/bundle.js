@@ -8266,9 +8266,18 @@
 
 	    render: function render() {
 	        return React.createElement(
-	            'h1',
+	            'div',
 	            null,
-	            'Random Events'
+	            React.createElement(
+	                'h1',
+	                null,
+	                'Random Events'
+	            ),
+	            React.createElement(
+	                'p',
+	                null,
+	                'Every 100 milliseconds, there is a 53% chance of an event occuring.'
+	            )
 	        );
 	    }
 	});
