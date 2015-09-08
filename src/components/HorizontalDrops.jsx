@@ -21,6 +21,19 @@ const Tick = React.createClass({
     }
 });
 
+const Axis = React.createClass({
+    render: function () {
+        var left = '-'+(this.props.window/1000)+' s';
+
+        return (
+            <g>
+                <text x="0" y={this.props.y}>{left}</text>
+                <text x={this.props.w-28} y={this.props.y}>now</text>
+            </g>
+        )
+    }
+});
+
 const HorizontalDrops = React.createClass({
     getDefaultProps: function () {
         return {
@@ -54,9 +67,11 @@ const HorizontalDrops = React.createClass({
                 {_.values(this.props.ticks).map(function (tick) {
                     return (
                         <Tick x={this.xScale(tick.time)}
-                              y="50" />
+                              y="50"
+                              key={tick.id} />
                     );
                  }, this)}
+                <Axis window={this.props.window} w="500" y="90" />
             </svg>
         );
     }
