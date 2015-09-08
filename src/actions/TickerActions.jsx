@@ -7,6 +7,18 @@ var TickerActions = {
         Dispatcher.dispatch({
             actionType: TickerConstants.TICK_CREATE
         });
+    },
+
+    start: function () {
+        Dispatcher.dispatch({
+            actionType: TickerConstants.TICK_START
+        });
+    },
+
+    stop: function () {
+        Dispatcher.dispatch({
+            actionType: TickerConstants.TICK_STOP
+        });
     }
 };
 

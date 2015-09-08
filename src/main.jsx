@@ -1,7 +1,9 @@
 
 const React = require('react');
 
+const Ticker = require('./components/Ticker');
+
 React.render(
-    <EventTicker />,
+    <Ticker />,
     document.querySelectorAll(".container")[0]
 );

@@ -15,4 +15,20 @@ describe('TickerActions', function () {
             actionType: TickerConstants.TICK_CREATE
         });
     });
+
+    it('can start', function () {
+        TickerActions.start();
+
+        Dispatcher.dispatch.should.have.been.calledWith({
+            actionType: TickerConstants.TICK_START
+        });
+    });
+
+    it('can stop', function () {
+        TickerActions.stop();
+
+        Dispatcher.dispatch.should.have.been.calledWith({
+            actionType: TickerConstants.TICK_STOP
+        });
+    });
 });

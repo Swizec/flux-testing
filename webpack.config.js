@@ -30,8 +30,8 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     externals: {
-        "react": "React",
-        "react/addons": "React",
+        //"react": "React",
+        //"react/addons": "React",
         "d3": "d3"
     },
     devtool: 'eval-source-map'

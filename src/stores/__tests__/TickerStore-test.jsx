@@ -53,4 +53,39 @@ describe('TickerStore', function () {
 
         spy.should.have.been.calledOnce;
     });
+
+    it('adds change listener', function () {
+        var spy = sinon.spy();
+        TickerStore.addChangeListener(spy);
+
+        TickerStore.emit('change');
+
+        spy.should.have.been.calledOnce;
+    });
+
+    it('removes change listener', function () {
+        var spy = sinon.spy();
+        TickerStore.addChangeListener(spy);
+        TickerStore.removeChangeListener(spy);
+
+        TickerStore.emit('change');
+
+        spy.should.not.have.been.called;
+    });
+
+    it('can start', function () {
+        Dispatcher.dispatch({
+            actionType: TickerConstants.TICK_START
+        });
+
+        TickerStore.isRunning().should.be.true;
+    });
+
+    it('can stop', function () {
+        Dispatcher.dispatch({
+            actionType: TickerConstants.TICK_STOP
+        });
+
+        TickerStore.isRunning().should.be.false;
+    });
 });
