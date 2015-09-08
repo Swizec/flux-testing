@@ -103,7 +103,7 @@
 	        return React.createElement(
 	            'div',
 	            null,
-	            React.createElement(Header, { count: this.state.allTicks.length }),
+	            React.createElement(Header, null),
 	            React.createElement(HorizontalDrops, { ticks: this.state.allTicks,
 	                window: this.state.window }),
 	            React.createElement(Controls, { isRunning: this.state.isRunning,
@@ -158,7 +158,7 @@
 
 	function start_ticker() {
 	    _ticker_interval = setInterval(function () {
-	        if (_.random(0, 30) > 20) {
+	        if (_.random(0, 30) > 16) {
 	            TickerActions.create();
 	        }
 	    }, 100);
@@ -8268,8 +8268,7 @@
 	        return React.createElement(
 	            'h1',
 	            null,
-	            this.props.count,
-	            ' Random Events'
+	            'Random Events'
 	        );
 	    }
 	});

@@ -21,7 +21,7 @@ function create() {
 
 function start_ticker() {
     _ticker_interval = setInterval(function () {
-        if (_.random(0, 30) > 20) {
+        if (_.random(0, 30) > 16) {
             TickerActions.create();
         }
     }, 100);
