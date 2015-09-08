@@ -4,7 +4,10 @@ const React = require('react');
 const Header = React.createClass({
     render: function () {
         return (
-            <h1>Random Events</h1>
+            <div>
+                <h1>Random Events</h1>
+                <p>Every 100 milliseconds, there is a 53% chance of an event occuring.
+            </div>
         )
     }
 });
