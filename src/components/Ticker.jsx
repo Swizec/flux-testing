@@ -22,7 +22,7 @@ const Ticker = React.createClass({
     render: function () {
         return (
             <div>
-                <Header count={this.state.allTicks.length} />
+                <Header />
                 <HorizontalDrops ticks={this.state.allTicks}
                                  window={this.state.window} />
                 <Controls isRunning={this.state.isRunning}
