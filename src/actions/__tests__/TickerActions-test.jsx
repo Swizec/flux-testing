@@ -8,11 +8,11 @@ describe('TickerActions', function () {
         sinon.spy(Dispatcher, 'dispatch');
     });
 
-    it('can create', function () {
-        TickerActions.create();
+    it('can create event', function () {
+        TickerActions.create_event();
 
         Dispatcher.dispatch.should.have.been.calledWith({
-            actionType: TickerConstants.TICK_CREATE
+            actionType: TickerConstants.TICK_CREATE_EVENT
         });
     });
 
@@ -38,6 +38,14 @@ describe('TickerActions', function () {
         Dispatcher.dispatch.should.have.been.calledWith({
             actionType: TickerConstants.TICK_SET_WINDOW,
             size: 100
+        });
+    });
+
+    it('can tick', function () {
+        TickerActions.tick();
+
+        Dispatcher.dispatch.should.have.been.calledWith({
+            actionType: TickerConstants.TICK
         });
     });
 });

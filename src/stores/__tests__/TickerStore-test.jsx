@@ -28,7 +28,7 @@ describe('TickerStore', function () {
 
     it('creates a tick', function () {
         Dispatcher.dispatch({
-            actionType: TickerConstants.TICK_CREATE
+            actionType: TickerConstants.TICK_CREATE_EVENT
         });
 
         var all = TickerStore.getAll(),
@@ -48,7 +48,18 @@ describe('TickerStore', function () {
         TickerStore.on('change', spy);
 
         Dispatcher.dispatch({
-            actionType: TickerConstants.TICK_CREATE
+            actionType: TickerConstants.TICK_CREATE_EVENT
+        });
+
+        spy.should.have.been.calledOnce;
+    });
+
+    it('emits change on tick', function () {
+        var spy = sinon.spy();
+        TickerStore.on('change', spy);
+
+        Dispatcher.dispatch({
+            actionType: TickerConstants.TICK
         });
 
         spy.should.have.been.calledOnce;

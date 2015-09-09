@@ -3,9 +3,9 @@ const Dispatcher = require('../dispatcher'),
       TickerConstants = require('../constants/TickerConstants');
 
 var TickerActions = {
-    create: function () {
+    create_event: function () {
         Dispatcher.dispatch({
-            actionType: TickerConstants.TICK_CREATE
+            actionType: TickerConstants.TICK_CREATE_EVENT
         });
     },
 
@@ -25,6 +25,12 @@ var TickerActions = {
         Dispatcher.dispatch({
             actionType: TickerConstants.TICK_SET_WINDOW,
             size: size
+        });
+    },
+
+    tick: function () {
+        Dispatcher.dispatch({
+            actionType: TickerConstants.TICK
         });
     }
 };

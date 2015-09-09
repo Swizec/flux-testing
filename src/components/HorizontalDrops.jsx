@@ -56,7 +56,7 @@ const HorizontalDrops = React.createClass({
 
         this.xScale
             .domain([(new Date()).getTime() - this.props.window,
-                     d3.max(ticks, function (d) { return d.time; })])
+                     (new Date()).getTime()])
             .range([0, 500]);
     },
 

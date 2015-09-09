@@ -22,7 +22,9 @@ function create() {
 function start_ticker() {
     _ticker_interval = setInterval(function () {
         if (_.random(0, 30) > 16) {
-            TickerActions.create();
+            TickerActions.create_event();
+        }else{
+            TickerActions.tick();
         }
     }, 100);
 }
@@ -60,7 +62,11 @@ const TickerStore = _.extend(EventEmitter.prototype, {
 Dispatcher.register(function (action) {
 
     switch (action.actionType) {
-        case TickerConstants.TICK_CREATE:
+        case TickerConstants.TICK:
+            TickerStore.emitChange();
+            break
+
+        case TickerConstants.TICK_CREATE_EVENT:
             create();
             TickerStore.emitChange();
             break;

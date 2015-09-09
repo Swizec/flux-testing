@@ -159,7 +159,9 @@
 	function start_ticker() {
 	    _ticker_interval = setInterval(function () {
 	        if (_.random(0, 30) > 16) {
-	            TickerActions.create();
+	            TickerActions.create_event();
+	        } else {
+	            TickerActions.tick();
 	        }
 	    }, 100);
 	}
@@ -197,7 +199,11 @@
 	Dispatcher.register(function (action) {
 
 	    switch (action.actionType) {
-	        case TickerConstants.TICK_CREATE:
+	        case TickerConstants.TICK:
+	            TickerStore.emitChange();
+	            break;
+
+	        case TickerConstants.TICK_CREATE_EVENT:
 	            create();
 	            TickerStore.emitChange();
 	            break;
@@ -7724,6 +7730,7 @@
 	var keyMirror = __webpack_require__(9);
 
 	module.exports = keyMirror({
+	    TICK: null,
 	    TICK_CREATE: null,
 	    TICK_START: null,
 	    TICK_STOP: null,
@@ -8221,9 +8228,9 @@
 	    TickerConstants = __webpack_require__(8);
 
 	var TickerActions = {
-	    create: function create() {
+	    create_event: function create_event() {
 	        Dispatcher.dispatch({
-	            actionType: TickerConstants.TICK_CREATE
+	            actionType: TickerConstants.TICK_CREATE_EVENT
 	        });
 	    },
 
@@ -8243,6 +8250,12 @@
 	        Dispatcher.dispatch({
 	            actionType: TickerConstants.TICK_SET_WINDOW,
 	            size: size
+	        });
+	    },
+
+	    tick: function tick() {
+	        Dispatcher.dispatch({
+	            actionType: TickerConstants.TICK
 	        });
 	    }
 	};
@@ -8412,9 +8425,7 @@
 	    update_d3: function update_d3(props) {
 	        var ticks = _.values(props.ticks);
 
-	        this.xScale.domain([new Date().getTime() - this.props.window, d3.max(ticks, function (d) {
-	            return d.time;
-	        })]).range([0, 500]);
+	        this.xScale.domain([new Date().getTime() - this.props.window, new Date().getTime()]).range([0, 500]);
 	    },
 
 	    render: function render() {
