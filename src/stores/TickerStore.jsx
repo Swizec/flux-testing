@@ -20,13 +20,22 @@ function create() {
 }
 
 function start_ticker() {
-    _ticker_interval = setInterval(function () {
-        if (_.random(0, 30) > 16) {
-            TickerActions.create_event();
-        }else{
-            TickerActions.tick();
+    if (_ticker_interval) return;
+    _ticker_interval = true;
+
+    var _tick =function tick () {
+        if (_ticker_interval) {
+            if (_.random(0, 30) > 26) {
+                TickerActions.create_event();
+            }else{
+                TickerActions.tick();
+            }
+
+            window.requestAnimationFrame(_tick);
         }
-    }, 100);
+    };
+
+    window.requestAnimationFrame(_tick);
 }
 
 function stop_ticker() {
